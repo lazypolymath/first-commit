@@ -11,7 +11,7 @@ A simple userscript that adds a convenient **First Commit** navigation button to
    - [Violentmonkey](https://violentmonkey.github.io) (Chrome, Firefox, Edge)
    - [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey) (Firefox)
 
-2. Install the script:1
+2. Install the script:
    - [Open the script in your browser](https://github.com/lazypolymath/first-commit/raw/main/dist/build.user.js) (or copy the contents of https://github.com/lazypolymath/first-commit/blob/main/dist/build.user.js and paste it into a newly created userscript)
 
 ## How It Works
