@@ -1,9 +1,10 @@
 // ==UserScript==
-// @name         first-commit
+// @name         GitHub First Commit
 // @namespace    https://github.com/lazypolymath
 // @version      1.0.0
 // @author       https://github.com/lazypolymath
-// @description  A simple userscript to view the first commit of a GitHub repository.
+// @description  A simple userscript to view the very first commit of a GitHub repository.
+// @license      MIT
 // @icon         https://github.githubassets.com/favicons/favicon.svg
 // @source       https://github.com/lazypolymath/first-commit
 // @downloadURL  https://github.com/lazypolymath/first-commit/raw/main/dist/build.user.js

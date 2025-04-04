@@ -7,9 +7,10 @@ export default defineConfig({
     monkey({
       entry: "src/main.ts",
       userscript: {
+        name: 'GitHub First Commit',
         version: "1.0.0",
         description:
-          "A simple userscript to view the first commit of a GitHub repository.",
+          "A simple userscript to view the very first commit of a GitHub repository.",
         icon: "https://github.githubassets.com/favicons/favicon.svg",
         namespace: "https://github.com/lazypolymath",
         author: "https://github.com/lazypolymath",
@@ -20,6 +21,7 @@ export default defineConfig({
           "https://github.com/lazypolymath/first-commit/raw/main/dist/build.user.js",
         source: "https://github.com/lazypolymath/first-commit",
         connect: ["api.github.com"],
+        license: 'MIT',
       },
       build: {
         fileName: "build.user.js",
