@@ -1,6 +1,15 @@
 (async () => {
-  const tabContainerSelector =
-    ".position-relative.header-wrapper.js-header-wrapper > header > div.AppHeader-localBar > nav > ul";
+  const tabContainerSelector = "header > nav > ul";
+
+  let tabContainerEl = document.querySelector(tabContainerSelector);
+  
+  while (!tabContainerEl) {
+    await new Promise((r) => setTimeout(() => r(true), 1000));
+    tabContainerEl = document.querySelector(tabContainerSelector);
+  }
+
+  // Wait for pending DOM operations to complete.
+  await new Promise((r) => setTimeout(() => r(true), 3000));
 
   const renderTab = async () => {
     const url = new URL(document.location.href);
@@ -30,14 +39,14 @@
     }
 
     let response = await fetch(
-      `https://api.github.com/repos/${author}/${repositoryName}/commits?per_page=1&page=1`
+      `https://api.github.com/repos/${author}/${repositoryName}/commits?per_page=1&page=1`,
     );
 
     // https://github.com/khalidbelk/FirstCommitter/blob/main/server/githubApi.ts#L34
     const linkHeader = response.headers.get("link");
 
     const matches = /rel="next",\s\<(.*?)\>;\srel="last"/.exec(
-      linkHeader || ""
+      linkHeader || "",
     );
 
     if (!matches || !matches.length) {
@@ -66,7 +75,7 @@
       }\nDateTime: ${commit.committer.date}\nComments: ${commit.comment_count || 0}`;
       tabLinkEl.setAttribute(
         "class",
-        lastEl.querySelector("a")?.getAttribute("class") || ""
+        lastEl.querySelector("a")?.getAttribute("class") || "",
       );
       tabLinkEl.href = `https://github.com/${author}/${repositoryName}/commit/${sha}`;
       tabLinkEl.innerHTML = `

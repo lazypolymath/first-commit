@@ -17,7 +17,13 @@
   'use strict';
 
   (async () => {
-    const tabContainerSelector = ".position-relative.header-wrapper.js-header-wrapper > header > div.AppHeader-localBar > nav > ul";
+    const tabContainerSelector = "header > nav > ul";
+    let tabContainerEl = document.querySelector(tabContainerSelector);
+    while (!tabContainerEl) {
+      await new Promise((r) => setTimeout(() => r(true), 1e3));
+      tabContainerEl = document.querySelector(tabContainerSelector);
+    }
+    await new Promise((r) => setTimeout(() => r(true), 3e3));
     const renderTab = async () => {
       var _a, _b;
       const url = new URL(document.location.href);
@@ -28,11 +34,11 @@
       if (author === "" || repositoryName === "") {
         return;
       }
-      const tabContainerEl = document.querySelector(tabContainerSelector);
-      if (!tabContainerEl) {
+      const tabContainerEl2 = document.querySelector(tabContainerSelector);
+      if (!tabContainerEl2) {
         return;
       }
-      const lastEl = tabContainerEl.querySelector("li:last-child");
+      const lastEl = tabContainerEl2.querySelector("li:last-child");
       if (!lastEl) {
         return;
       }
@@ -70,7 +76,7 @@ Comments: ${commit.comment_count || 0}`;
       <svg aria-hidden="true" focusable="false" class="octicon octicon-history" viewBox="0 -2 20 20" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path></svg>
       <span data-content="First Commit">First Commit</span>
       `;
-        tabContainerEl.append(tabLinkEl);
+        tabContainerEl2.append(tabLinkEl);
       }
     };
     const handleHistoryChange = async () => {
